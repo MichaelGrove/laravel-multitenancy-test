@@ -24,12 +24,18 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
 
-    // Authentication routes for each tenant
     Auth::routes();
 
     Route::get('/', function () {
         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
     });
 
-    Route::get('/home', 'HomeController@index');
+    Route::prefix('{locale?}')->middleware('locale')->group(function() {
+
+        Route::get('/', function () {
+            return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+        });
+
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
 });
