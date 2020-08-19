@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    {{ __('validation.required') }}
                 </div>
             </div>
         </div>
