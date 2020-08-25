@@ -33,4 +33,6 @@ Route::middleware([
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/foo', 'HomeController@foo')->name('foo');
+    Route::get('/bar', 'HomeController@bar')->name('bar');
 });
